@@ -72,9 +72,10 @@
         });
     });
     const mainButton = window.Telegram.WebApp.MainButton;
-          mainButton.setParams({
-              text: 'Proceed', 
-          });
+    mainButton.setParams({
+        text: 'Proceed', 
+    });
+    Telegram.WebApp.MainButton.show()
     mainButton.onClick(() => {
         const url = document.getElementById('url').value;
         const likes = document.getElementById('likes').value;
