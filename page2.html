@@ -90,6 +90,18 @@
         <label for="likes">Number of Likes:</label>
         <input type="number" id="likes" name="likes" placeholder="Enter likes count" required>
       </div>
+      <script>
+        likesInput = document.getElementById('likes');
+        likesInput.addEventListener('input', function (event) {
+          console.log(likesInput.validity.valid);
+          if (urlInput.validity.valid) {
+              Telegram.WebApp.MainButton.show();
+          } else {
+              Telegram.WebApp.MainButton.hide();
+          }
+        });
+
+      </script>
     </form>
   </div>
 </body>
