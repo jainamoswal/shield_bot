@@ -69,6 +69,10 @@
             value: parseInt(minRetweets),
         });
     });
+    const mainButton = window.Telegram.WebApp.MainButton;
+          mainButton.setParams({
+              text: 'Proceed', 
+          });
     mainButton.onClick(() => {
         const url = document.getElementById('url').value;
         const likes = document.getElementById('likes').value;
