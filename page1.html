@@ -58,13 +58,17 @@
     </style>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
+        var params = new URLSearchParams(window.location.search);
+        var id = params.get('id');
+
         const mainButton = window.Telegram.WebApp.MainButton;
         mainButton.setParams({
             text: 'Proceed', 
         });
         mainButton.onClick(() => {
             const url = document.getElementById('url').value;
-            window.Telegram.WebApp.sendData(url);
+            value = {id: id, url: url}
+            window.Telegram.WebApp.sendData(JSON.stringify(value));
         });
     </script>
 
