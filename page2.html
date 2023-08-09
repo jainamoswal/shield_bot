@@ -73,7 +73,7 @@
     });
     const mainButton = window.Telegram.WebApp.MainButton;
     mainButton.setParams({
-        text: 'Proceed', 
+        text: 'Proceed@', 
     });
     Telegram.WebApp.MainButton.show()
     mainButton.onClick(() => {
@@ -97,27 +97,21 @@
         <input type="number" id="likes" name="likes" placeholder="Enter likes count" required>
       </div>
       <script>
-        function ev(event){
-          if (likesInput.checkValidity()) {
+          function setupInputValidation(inputId) {
+            const inputElement = document.getElementById(inputId);
+          
+            inputElement.addEventListener('input', () => {
+              if (inputElement.checkValidity()) {
                 Telegram.WebApp.MainButton.show();
-            } else {
+              } else {
                 Telegram.WebApp.MainButton.hide();
-            }
-        };
-        likesInput = document.getElementById('likes').addEventListener('input',(event){
-          if (likesInput.checkValidity()) {
-                Telegram.WebApp.MainButton.show();
-            } else {
-                Telegram.WebApp.MainButton.hide();
-            }
-        });        
-        retweetInput = document.getElementById('retweets').addEventListener('input',(event){
-          if (retweetInput.checkValidity()) {
-                Telegram.WebApp.MainButton.show();
-            } else {
-                Telegram.WebApp.MainButton.hide();
-            }
-        })
+              }
+            });
+          }
+          
+          setupInputValidation('likes');
+          setupInputValidation('retweets');
+
       </script>
     </form>
   </div>
