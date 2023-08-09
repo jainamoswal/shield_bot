@@ -77,7 +77,6 @@
     });
     Telegram.WebApp.MainButton.show()
     mainButton.onClick(() => {
-        const url = document.getElementById('url').value;
         const likes = document.getElementById('likes').value;
         const retweets = document.getElementById('retweets').value;
         value = {page: '2', id: id, likes: likes, tweets:tweets}
@@ -98,17 +97,15 @@
         <input type="number" id="likes" name="likes" placeholder="Enter likes count" required>
       </div>
       <script>
-        likesInput = document.getElementById('likes');
-        likesInput.addEventListener('input', function (event) {
-            console.log(likesInput.validity.valid);
-            if (likesInput.checkValidity()) {
+        function ev(event){
+          if (likesInput.checkValidity()) {
                 Telegram.WebApp.MainButton.show();
             } else {
                 Telegram.WebApp.MainButton.hide();
             }
-        }
-    );
-
+        };
+        likesInput = document.getElementById('likes').addEventListener('input',ev);        
+        retweetInput = document.getElementById('retweets').addEventListener('input',ev)
       </script>
     </form>
   </div>
