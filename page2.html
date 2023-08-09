@@ -94,7 +94,7 @@
         likesInput = document.getElementById('likes');
         likesInput.addEventListener('input', function (event) {
           console.log(likesInput.validity.valid);
-          if (urlInput.validity.valid) {
+          if (likesInput.checkValidity()) {
               Telegram.WebApp.MainButton.show();
           } else {
               Telegram.WebApp.MainButton.hide();
