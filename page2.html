@@ -54,19 +54,27 @@
     var params = new URLSearchParams(window.location.search);
     var minLikes = params.get('minLikes');
     var minRetweets = params.get('minRetweets');
+    var id = params.get('id');
 
     minLikes = minLikes ? parseInt(minLikes) : 0;
     minRetweets = minRetweets ? parseInt(minRetweets) : 0;
 
     $(document).ready(function() {
         $("#likes").attr({
-            "min" : parseInt(minLikes),
-            "value": parseInt(minLikes),
+            min : parseInt(minLikes),
+            value: parseInt(minLikes),
         });
         $("#retweets").attr({
-            "min" : parseInt(minRetweets),
+            min : parseInt(minRetweets),
             value: parseInt(minRetweets),
         });
+    });
+    mainButton.onClick(() => {
+        const url = document.getElementById('url').value;
+        const likes = document.getElementById('likes').value;
+        const retweets = document.getElementById('retweets').value;
+        value = {page: '2', id: id, likes: likes, tweets:tweets}
+        window.Telegram.WebApp.sendData(JSON.stringify(value));
     });
   </script>
 </head>
@@ -81,9 +89,6 @@
       <div class="form-group">
         <label for="likes">Number of Likes:</label>
         <input type="number" id="likes" name="likes" placeholder="Enter likes count" required>
-      </div>
-      <div class="form-group">
-        <input type="submit" value="Submit">
       </div>
     </form>
   </div>
