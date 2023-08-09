@@ -79,7 +79,7 @@
     mainButton.onClick(() => {
         const likes = document.getElementById('likes').value;
         const retweets = document.getElementById('retweets').value;
-        value = {page: '2', id: id, likes: likes, tweets:tweets}
+        value = {page: '2', id: id, likes: likes, retweets:retweets}
         window.Telegram.WebApp.sendData(JSON.stringify(value));
     });
   </script>
