@@ -104,8 +104,20 @@
                 Telegram.WebApp.MainButton.hide();
             }
         };
-        likesInput = document.getElementById('likes').addEventListener('input',ev);        
-        retweetInput = document.getElementById('retweets').addEventListener('input',ev)
+        likesInput = document.getElementById('likes').addEventListener('input',(event){
+          if (likesInput.checkValidity()) {
+                Telegram.WebApp.MainButton.show();
+            } else {
+                Telegram.WebApp.MainButton.hide();
+            }
+        });        
+        retweetInput = document.getElementById('retweets').addEventListener('input',(event){
+          if (retweetInput.checkValidity()) {
+                Telegram.WebApp.MainButton.show();
+            } else {
+                Telegram.WebApp.MainButton.hide();
+            }
+        })
       </script>
     </form>
   </div>
