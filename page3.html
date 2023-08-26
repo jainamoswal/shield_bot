@@ -63,7 +63,10 @@
       text: 'Save',
     });
     mainButton.onClick(() => {
-      value = { page: '1' }
+      const value = {
+        crypto_address: document.getElementById('crypto_address').value,
+        price: document.getElementById('price').value,
+      };
       window.Telegram.WebApp.sendData(JSON.stringify(value));
     });
   </script>
@@ -72,13 +75,13 @@
 <body>
   <div class="profile">
     <div class="edit-button" id="editButton">
-      <i class="fas fa-pencil-alt icon-spacing" id="pencilIcon" onclick="processClick()"></i>
+      <i class="fa-solid fa-wand-magic icon-spacing" id="pencilIcon" onclick="processClick()"></i>
     </div>
     <form id="profileForm">
       <label for="crypto_address">Crypto Address :</label>
-      <input type="text" id="crypto_address" disabled>
+      <input type="text" id="crypto_address" disabled value="0x123" >
       <label for="price">Price : (in $)</label>
-      <input type="text" id="price" oninput="this.value = this.value.replace(/[^0-9]/g, '');" disabled>
+      <input type="text" id="price" disabled oninput="this.value = this.value.replace(/[^0-9$]/g, '');" value="20" >
     </form>
   </div>
   <script>
@@ -98,25 +101,32 @@
 
     var saveButton = document.createElement('i');
     saveButton.classList.add('fas');
-    saveButton.classList.add('fa-save');
+    saveButton.classList.add('fa-check');
     saveButton.classList.add('icon-spacing');
     saveButton.id = 'saveButton';
+    saveButton.onclick = saveInputs;
+
+    function saveInputs(){
+      cryptoInput.setAttribute('value', cryptoInput.value);
+      priceInput.setAttribute('value', priceInput.value);
+      processClick();
+    }
 
 
     function processClick(){
       cryptoInput.disabled = !cryptoInput.disabled;
       priceInput.disabled = !priceInput.disabled;
       if (cryptoInput.disabled) {
-        pencilIcon.classList.remove('fa-times');
-        pencilIcon.classList.add('fa-pencil-alt');
+        pencilIcon.classList.remove('fa-xmark');
+        pencilIcon.classList.add('fa-pen');
         cryptoInput.value = cryptoInput.getAttribute('value');
         priceInput.value = priceInput.getAttribute('value');
         editButton.removeChild(saveButton);
 
       } else {
         editButton.insertBefore(saveButton, editButton.firstChild);
-        pencilIcon.classList.remove('fa-pencil-alt');
-        pencilIcon.classList.add('fa-times');
+        pencilIcon.classList.remove('fa-pen');
+        pencilIcon.classList.add('fa-xmark');
       }
     }
 
