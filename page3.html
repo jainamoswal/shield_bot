@@ -62,6 +62,7 @@
     mainButton.setParams({
       text: 'Save',
     });
+    Telegram.WebApp.MainButton.show();
     mainButton.onClick(() => {
       const value = {
         crypto_address: document.getElementById('crypto_address').value,
