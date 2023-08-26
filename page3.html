@@ -59,10 +59,20 @@
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
   <script>
     const mainButton = window.Telegram.WebApp.MainButton;
+
+    var params = new URLSearchParams(window.location.search);
+    var price = params.get('price');
+    var address = params.get('address');
+    var noEdit = params.get('noedit');
+
+    if (noEdit != 'true') {
+      Telegram.WebApp.MainButton.show();
+    };
+
     mainButton.setParams({
       text: 'Save',
     });
-    Telegram.WebApp.MainButton.show();
+
     mainButton.onClick(() => {
       const value = {
         crypto_address: document.getElementById('crypto_address').value,
@@ -86,10 +96,6 @@
     </form>
   </div>
   <script>
-    var params = new URLSearchParams(window.location.search);
-    var price = params.get('price');
-    var address = params.get('address');
-
     const editButton = document.getElementById('editButton');
     const cryptoInput = document.getElementById('crypto_address');
     const priceInput = document.getElementById('price');
@@ -106,6 +112,15 @@
     saveButton.classList.add('icon-spacing');
     saveButton.id = 'saveButton';
     saveButton.onclick = saveInputs;
+
+    if (noEdit == 'true') {
+      cryptoInput.disabled = true;
+      priceInput.disabled = true;
+
+      Array.from(editButton.childNodes).forEach(childNode => {
+        childNode.remove();
+      });
+    }
 
     function saveInputs(){
       cryptoInput.setAttribute('value', cryptoInput.value);
