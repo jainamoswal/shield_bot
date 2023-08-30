@@ -91,8 +91,8 @@
     <form id="profileForm">
       <label for="crypto_address">Crypto Address :</label>
       <input type="text" id="crypto_address" disabled value="0x123" >
-      <label for="price">Price : (in $)</label>
-      <input type="text" id="price" disabled oninput="this.value = this.value.replace(/[^0-9$]/g, '');" value="20" >
+      <label for="price">Price : (in BNB)</label>
+      <input type="text" id="price" oninput="this.value = this.value.replace(/[^0-9.]/g, '');" value=0.5>
     </form>
   </div>
   <script>
