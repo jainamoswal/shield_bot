@@ -81,7 +81,7 @@
             <div class="form-group">
                 <label for="url">Tweet URL:</label>
                 <input type="url" id="url" name="url" required autofocus
-                    placeholder="https://twitter.com/username/status/1688397835580940123" pattern="https://twitter.com/(.+)/status/(.+)" oninvalid="setCustomValidity('Paste tweet link!')">
+                    placeholder="https://twitter.com/username/status/1688397835580940123" pattern="https://(twitter|x).com/(.+)/status/(.+)" oninvalid="setCustomValidity('Paste tweet link!')">
             </div>
             <script>
                 urlInput = document.getElementById('url');
