@@ -71,6 +71,7 @@
             const network = document.getElementById('network').value;
             const value = { contractAddress: contractAddress, network: network };
             window.Telegram.WebApp.sendData(JSON.stringify(value));
+            window.Telegram.WebApp.close();
         });
 
 
